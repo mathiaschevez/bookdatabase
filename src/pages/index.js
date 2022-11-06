@@ -117,6 +117,7 @@ export default function Home() {
               bookAuthor={book.bookAuthor}
               bookGenre={book.bookGenre}
               getBooks={getBooks}
+              addBook={false}
             />
           ))}
         </div>
