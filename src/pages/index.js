@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import { Book } from '../components'
 
 export default function Home() {
   const [books, setBooks] = useState()
@@ -12,7 +13,6 @@ export default function Home() {
   useEffect(() => {
     if(!books) getBooks()
   })
-
 
   const getBooks = async () => {
     try {
@@ -110,11 +110,14 @@ export default function Home() {
       {books && 
         <div className='grid md:grid-cols-3 lg:grid-cols-4 gap-9 p-3 mt-9'>
           {books.map(book => (
-            <div className='text-white bg-slate-500 p-6 rounded' key={book.id}>
-              <h1 className='font-bold text-white text-lg mb-6'>{book.bookTitle}</h1>
-              <h1 className='font-bold'>{book.bookAuthor}</h1>
-              <h1 className='font-bold'>{book.bookGenre}</h1>
-            </div>
+            <Book 
+              key={book.id}
+              bookId={book.id}
+              bookTitle={book.bookTitle}
+              bookAuthor={book.bookAuthor}
+              bookGenre={book.bookGenre}
+              getBooks={getBooks}
+            />
           ))}
         </div>
       }
