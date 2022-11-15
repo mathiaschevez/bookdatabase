@@ -10,9 +10,34 @@ datasource db {
 }
 
 model BookSuggestion {
-  id Int @id @default(autoincrement())
-  bookTitle String
-  bookAuthor String
-  bookGenre String
+  id                  Int     @id @default(autoincrement())
+  bookTitle           String
+  bookAuthor          String
+  bookGenre           String
+  bookCoverUrl        String?
+  bookPublishedDate   String?
+  bookRating          Int     @default(0)
+  bookDescription     String?  @db.Text
 }
 
+model MovieSuggestion {
+  id                Int     @id @default(autoincrement())
+  movieTitle        String
+  movieGenre        String
+  movieImageUrl     String?
+  movieReleaseYear  Int?  
+  movieRating       Int     @default(0)
+  movieDescription  String?  @db.Text
+}
+
+model SongSuggestion {
+  id                Int     @id @default(autoincrement())
+  songTitle         String
+  songArtist        String
+  songAlbumCoverURL String
+  songYoutubeURL    String?
+  songLyricsURL     String?
+  songReleaseDate   String
+  songRating        Int     @default(0)
+  songDescription   String?  @db.Text
+}
